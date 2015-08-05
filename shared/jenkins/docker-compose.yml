@@ -1,0 +1,6 @@
+jenkins:
+  image: jenkins
+  volumes:
+    - /var/jenkins_home
+  ports:
+    - "10.0.0.102:80:8080"

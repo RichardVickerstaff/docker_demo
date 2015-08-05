@@ -1,0 +1,17 @@
+vagrant install docker
+install grafana stack
+
+install gitlab
+install jenkins
+install dockerhub
+
+hook up build pipelie
+  push to git
+  git pushed build to jenkins
+    run tests
+    build new image
+  push image to dockerhub
+  trigger new deploy
+
+use app
+look at graphana

@@ -1,0 +1,26 @@
+influxsrv:
+  image: tutum/influxdb:0.8.8
+  ports:
+    - "10.0.0.100:8083:8083"
+    - "10.0.0.100:8086:8086"
+  environment:
+    - PRE_CREATE_DB=cadvisor
+cadvisor:
+  image: google/cadvisor:latest
+  command: --logtostderr -storage_driver=influxdb -storage_driver_host=10.0.0.100:8086 -storage_driver_db=cadvisor -storage_driver_user=root -storage_driver_password=root
+  volumes:
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+  ports:
+    - "10.0.0.100:80:8080"
+graphana:
+  image: grafana/grafana:latest
+  ports:
+    - "=10.0.0.100:80:3000"
+  environment:
+    - INFLUXDB_HOST=10.0.0.100
+    - INFLUXDB_PORT=8086
+    - INFLUXDB_NAME=cadvisor
+    - INFLUXDB_USER=root
+    - INFLUXDB_PASS=root
