@@ -1,5 +1,6 @@
 influxsrv:
   image: tutum/influxdb:0.8.8
+  log_driver: "syslog"
   ports:
     - "10.0.0.100:8083:8083"
     - "10.0.0.100:8086:8086"
@@ -7,6 +8,7 @@ influxsrv:
     - PRE_CREATE_DB=cadvisor
 cadvisor:
   image: google/cadvisor:latest
+  log_driver: "syslog"
   command: --logtostderr -storage_driver=influxdb -storage_driver_host=10.0.0.100:8086 -storage_driver_db=cadvisor -storage_driver_user=root -storage_driver_password=root
   volumes:
     - /var/run:/var/run:rw
@@ -16,6 +18,7 @@ cadvisor:
     - "10.0.0.100:80:8080"
 graphana:
   image: grafana/grafana:latest
+  log_driver: "syslog"
   ports:
     - "10.0.0.101:80:3000"
   environment:

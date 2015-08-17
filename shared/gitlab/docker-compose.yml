@@ -1,5 +1,6 @@
 postgresql:
   image: sameersbn/postgresql:9.4-2
+  log_driver: "syslog"
   environment:
     - DB_USER=gitlab
     - DB_PASS=password
@@ -8,6 +9,7 @@ postgresql:
     - /srv/docker/gitlab/postgresql:/var/lib/postgresql
 gitlab:
   image: sameersbn/gitlab:7.13.3
+  log_driver: "syslog"
   links:
     - redis:redisio
     - postgresql:postgresql
@@ -36,5 +38,6 @@ gitlab:
     - /srv/docker/gitlab/gitlab:/home/git/data
 redis:
   image: sameersbn/redis:latest
+  log_driver: "syslog"
   volumes:
     - /srv/docker/gitlab/redis:/var/lib/redis
