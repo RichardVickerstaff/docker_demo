@@ -1,0 +1,21 @@
+elasticsearch:
+  image: elasticsearch
+  ports:
+    - "10.0.0.100:9200:9200"
+  volumes:
+    - /data/elasticsearch:/usr/share/elasticsearch/data
+logstash:
+  image: logstash
+  ports:
+    - "10.0.0.100:25826:25826"
+  volumes:
+    - /var/host/elk/conf:/conf
+  links:
+    - elasticsearch:db
+  command: logstash -f /conf/syslog.conf
+kibana:
+  image: vfarcic/kibana
+  ports:
+    - "10.0.0.100:5601:5601"
+  links:
+    - elasticsearch:db

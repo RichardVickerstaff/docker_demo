@@ -7,10 +7,15 @@ run() {
   start_docker_at_boot
   start_docker
   install_docker_compose
+  create_elastic_folder
 }
 
 update_yum() {
   yum update
+}
+
+install_syslog() {
+  yum install rsyslog -y
 }
 
 install_docker() {
@@ -32,6 +37,10 @@ add_vagrant_to_docker() {
 install_docker_compose() {
   curl -L https://github.com/docker/compose/releases/download/1.3.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
   chmod +x /usr/local/bin/docker-compose
+}
+
+create_elastic_folder() {
+  mkdir -p /data/elasticsearch
 }
 
 run
