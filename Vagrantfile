@@ -9,11 +9,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :private_network, ip: "10.0.0.101"
   config.vm.network :private_network, ip: "10.0.0.102"
   config.vm.network :private_network, ip: "10.0.0.103"
+  config.vm.network :private_network, ip: "10.0.0.104"
 
   config.vm.provider :virtualbox do |vb|
     vb.name = "docker_demo"
     vb.cpus = 4
-    vb.memory = 2048
+    vb.memory = 4096
   end
 
   host_data_dir = File.join(File.dirname(__FILE__), "shared")
