@@ -14,8 +14,8 @@ gitlab:
     - redis:redisio
     - postgresql:postgresql
   ports:
-    - "10.0.0.101:80:80"
-    - "10.0.0.101:22:22"
+    - "10.0.0.102:80:80"
+    - "10.0.0.102:22:22"
   environment:
     - TZ=Asia/Kolkata
     - SMTP_ENABLED=false
