@@ -2,10 +2,10 @@
 
 run() {
   update_yum
-  install docker
-  start_docker
-  start_docker_at_boot
+  install_docker
   add_vagrant_to_docker
+  start_docker_at_boot
+  start_docker
   install_docker_compose
 }
 
@@ -13,7 +13,7 @@ update_yum() {
   yum update
 }
 
-instal_docker() {
+install_docker() {
   curl -sSL https://get.docker.com/ | sh
 }
 
@@ -22,7 +22,7 @@ start_docker() {
 }
 
 start_docker_at_boot() {
-  sudo chkconfig docker on
+  chkconfig docker on
 }
 
 add_vagrant_to_docker() {
