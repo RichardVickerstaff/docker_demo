@@ -8,6 +8,7 @@ run() {
   start_docker
   install_docker_compose
   create_elastic_folder
+  install_syslog
 }
 
 update_yum() {
