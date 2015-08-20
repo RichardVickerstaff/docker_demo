@@ -1,7 +1,0 @@
-jenkins:
-  image: jenkins
-  log_driver: "syslog"
-  volumes:
-    - /var/jenkins_home
-  ports:
-    - "10.0.0.103:80:8080"
