@@ -20,7 +20,7 @@ update_yum() {
 }
 
 install_deps() {
-  yum install git java jenkins -y
+  yum install git java openssl-devel readline-devel zlib-devel gcc libxml2 libxml2-devel libxslt libxslt-devel gcc-c++ ruby-devel jenkins -y
 }
 
 install_docker() {
