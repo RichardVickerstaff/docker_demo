@@ -5,3 +5,6 @@ run `docker run --rm -v $PWD/conf:/data vfarcic/elastic-dump --input=/data/es-ki
 ## Gitlab
 Create a user as admin
 Add ssh key to the user and create a project
+
+## TODO
+Edit sshd_config
