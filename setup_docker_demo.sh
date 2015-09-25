@@ -9,6 +9,7 @@ run() {
   install_docker_compose
   create_elastic_folder
   install_syslog
+  update_sshd_config
 }
 
 update_yum() {
@@ -42,6 +43,11 @@ install_docker_compose() {
 
 create_elastic_folder() {
   mkdir -p /data/elasticsearch
+}
+
+update_sshd_config() {
+  sed -i "s/#ListenAddress 0.0.0.0/ListenAddress 10.0.0.100/g" /etc/ssh/sshd_config
+  service sshd restart
 }
 
 run
