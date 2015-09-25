@@ -4,7 +4,6 @@ run() {
   update_yum
   install_docker
   add_vagrant_to_docker
-  start_docker_at_boot
   start_docker
   install_docker_compose
   create_elastic_folder
@@ -25,11 +24,7 @@ install_docker() {
 }
 
 start_docker() {
-  service docker start
-}
-
-start_docker_at_boot() {
-  chkconfig docker on
+  docker daemon --insecure-registry=10.0.0.100:5000 &
 }
 
 add_vagrant_to_docker() {

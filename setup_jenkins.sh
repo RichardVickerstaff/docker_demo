@@ -43,8 +43,7 @@ install_docker() {
 }
 
 start_docker() {
-  service docker start
-  chkconfig docker on
+  docker daemon --insecure-registry=10.0.0.100:5000 &
 }
 
 add_users_to_docker() {
