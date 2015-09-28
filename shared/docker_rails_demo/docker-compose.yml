@@ -1,0 +1,12 @@
+mongo:
+  image: mongo
+rails:
+  image: 10.0.0.100:5000/rails
+  environment:
+    - SECRET_KEY_BASE=$(pwgen -s 128 1)
+  ports:
+    - "10.0.0.104:8080:8080"
+nginx:
+  image: 10.0.0.100:5000/nginx
+  ports:
+    - "10.0.0.104:80:80"
