@@ -1,12 +1,17 @@
 mongo:
   image: mongo
+  log_driver: "syslog"
 rails:
   image: 10.0.0.100:5000/rails
+  log_driver: "syslog"
   environment:
     - SECRET_KEY_BASE=$(pwgen -s 128 1)
-  ports:
-    - "10.0.0.104:8080:8080"
+  links:
+    - mongo:mongo
 nginx:
   image: 10.0.0.100:5000/nginx
+  log_driver: "syslog"
   ports:
     - "10.0.0.104:80:80"
+  links:
+    - rails:rails
